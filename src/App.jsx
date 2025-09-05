@@ -9,6 +9,7 @@ import LogoShowcase from "./sections/LogoShowcase";
 import FeatureCards from "./sections/FeatureCards";
 import { Toaster } from "react-hot-toast";
 import Navbar from "./components/NavBar";
+import WhatsAppWidget from "./components/WhatsAppWidget";
 
 const App = () => (
   <>
@@ -21,7 +22,9 @@ const App = () => (
     <TechStack />
     <Testimonials />
     <Contact />
-    <Footer /> <Toaster position="bottom-center" />
+    <Footer /> 
+    <WhatsAppWidget/>
+    <Toaster position="bottom-center" />
   </>
 );
 
