@@ -7,6 +7,7 @@ import Hero from "./sections/Hero";
 import ShowcaseSection from "./sections/ShowcaseSection";
 import LogoShowcase from "./sections/LogoShowcase";
 import FeatureCards from "./sections/FeatureCards";
+import { Toaster } from "react-hot-toast";
 import Navbar from "./components/NavBar";
 
 const App = () => (
@@ -20,7 +21,7 @@ const App = () => (
     <TechStack />
     <Testimonials />
     <Contact />
-    <Footer />
+    <Footer /> <Toaster position="bottom-center" />
   </>
 );
 

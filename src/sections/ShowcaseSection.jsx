@@ -79,6 +79,12 @@ const AppShowcase = () => {
               </div>
               <h2>Real Estate Enquiry page using MERN Stack to record enquiries. </h2>
             </div>
+
+
+
+
+
+            
           </div>
         </div>
       </div>

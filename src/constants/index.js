@@ -159,7 +159,7 @@ const expCards = [
     title: "Masters of Computer Applications",
     date: "June 2023 - July 2025",
     responsibilities: [
-      "Completed advanced coursework in software development, databases, networking, and cloud computing.",
+      "PANJAB UNIVERSITY , CHANDIGARH Completed advanced coursework in software development, databases, networking, and cloud computing.",
       "Developed academic and real-world projects applying modern web and mobile technologies.",
       "Collaborated with peers and faculty on research-driven projects and case studies.",
     ],

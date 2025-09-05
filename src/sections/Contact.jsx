@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
+import toast from "react-hot-toast";
 
 import TitleHeader from "../components/TitleHeader";
 import ContactExperience from "../components/models/contact/ContactExperience";
@@ -11,6 +11,7 @@ const Contact = () => {
     name: "",
     email: "",
     message: "",
+    contactno: "",
   });
 
   const handleChange = (e) => {
@@ -20,22 +21,31 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Show loading state
+    setLoading(true);
 
     try {
-      await emailjs.sendForm(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+      const response = await fetch(
+        `${import.meta.env.VITE_APP_API_URL}/api/messages`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        }
       );
 
-      // Reset form and stop loading
-      setForm({ name: "", email: "", message: "" });
+      if (response.ok) {
+        toast.success("Message sent successfully!");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        toast.error("Failed to send message");
+        console.error("Failed to send message");
+      }
     } catch (error) {
-      console.error("EmailJS Error:", error); // Optional: show toast
+      console.error("Error:", error);
     } finally {
-      setLoading(false); // Always stop loading, even on error
+      setLoading(false);
     }
   };
 
@@ -55,7 +65,7 @@ const Contact = () => {
                 className="w-full flex flex-col gap-7"
               >
                 <div>
-                  <label htmlFor="name">Your name</label>
+                  <label htmlFor="name">Your name *</label>
                   <input
                     type="text"
                     id="name"
@@ -68,7 +78,7 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="email">Your Email</label>
+                  <label htmlFor="email">Your Email *</label>
                   <input
                     type="email"
                     id="email"
@@ -81,7 +91,20 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message">Your Message</label>
+                  <label htmlFor="contactno">Your Contact Number</label>
+                  <input
+                    type="tel" // Use type="tel" for better mobile keyboard experience
+                    id="contactno"
+                    name="contactno"
+                    value={form.contactno}
+                    onChange={handleChange}
+                    placeholder="What's your contact number?"
+                    required // Make it required to match the schema
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message">Your Message *</label>
                   <textarea
                     id="message"
                     name="message"
