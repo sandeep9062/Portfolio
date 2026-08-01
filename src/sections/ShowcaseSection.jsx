@@ -32,8 +32,25 @@ const PROJECTS = [
     featured: true,
   },
 
-
-
+  {
+    title: "Post Mark",
+    subtitle: "AI-powered social media post generator",
+    description: "Generate engaging social media posts with AI assistance.Send posts on whatsapp, email, or download them for later use.",
+    image: "/images/projects/project7.png",
+    url: "#",
+    domain: "postmark.com",
+    tags: ["Next.js", "React"],
+  },
+  {
+    title: "VermiGrows",
+    subtitle: "AI-powered e-commerce store",
+    description: "ML-assisted shopping experience for a sustainable goods store.",
+    image: "/images/projects/project6.png",
+    url: "https://vermigrows-client.vercel.app/",
+    domain: "vermigrows-client.vercel.app",
+    tags: ["Next.js", "Express.js", "AI/ML", "Tailwind CSS"],
+    featured: true,
+  },
   {
     title: "Post a Requirement",
     subtitle: "Requirement intake flow",
@@ -69,25 +86,8 @@ const PROJECTS = [
     domain: "anime-dun-eight.vercel.app",
     tags: ["Next.js", "Tailwind CSS"],
   },
-  {
-    title: "VermiGrows",
-    subtitle: "AI-powered e-commerce store",
-    description: "ML-assisted shopping experience for a sustainable goods store.",
-    image: "/images/projects/project6.png",
-    url: "https://vermigrows-client.vercel.app/",
-    domain: "vermigrows-client.vercel.app",
-    tags: ["Next.js", "Express.js", "AI/ML", "Tailwind CSS"],
-    featured: true,
-  },
-  {
-    title: "Post Mark",
-    subtitle: "AI-powered social media post generator",
-    description: "Generate engaging social media posts with AI assistance.Send posts on whatsapp, email, or download them for later use.",
-    image: "/images/projects/project7.png",
-    url: "#",
-    domain: "postmark.com",
-    tags: ["Next.js", "React"],
-  },
+
+
 ];
 
 const AppShowcase = () => {
