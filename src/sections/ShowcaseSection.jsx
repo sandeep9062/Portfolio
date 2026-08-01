@@ -41,6 +41,26 @@ const PROJECTS = [
     domain: "postmark.com",
     tags: ["Next.js", "React"],
   },
+
+
+
+  // {
+  //   title: "Dental Tourism Clinics India",
+  //   subtitle: "dental tourism and clinic platform with multivendor marketplace ",
+  //   description:
+  //     "A platform for dental tourism and clinics, allowing users to find and book dental services in India.",
+  //   image: "/images/projects/project9.png",
+  //   url: "https://dentaltourismclinicsindia.com/",
+  //   domain: "dentaltourismclinicsindia.com",
+  //   tags: ["Next.js", "Express","Nodejs", "Tailwind CSS", "MongoDB" ,"Cloudinary"],
+  //   featured: true,
+  // },
+
+
+
+
+
+
   {
     title: "VermiGrows",
     subtitle: "AI-powered e-commerce store",
