@@ -7,177 +7,195 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const PROJECTS = [
+  {
+    title: "PropertyBulbul",
+    subtitle: "Real estate listing platform",
+    description:
+      "A fast, user-friendly experience for browsing and posting property listings.",
+    image: "/images/projects/project5.png",
+    url: "https://propertybulbul.com/",
+    domain: "propertybulbul.com",
+    tags: ["Next.js", "Express", "Tailwind CSS"],
+    featured: true,
+  },
+
+  {
+    title: "InkofMemories",
+    subtitle: "printing and gifting platform, multivendor marketplace",
+    description:
+      "platform for printing and gifting, allowing users to create personalized gifts and print materials.",
+    image: "/images/projects/project8.png",
+    url: "https://inkofmemories.com/",
+    domain: "inkofmemories.com",
+    tags: ["Next.js", "Express","Nodejs", "Tailwind CSS"],
+    featured: true,
+  },
+
+
+
+  {
+    title: "Post a Requirement",
+    subtitle: "Requirement intake flow",
+    description: "Streamlined form for posting new property requirements.",
+    image: "/images/projects/project2.png",
+    url: "https://www.propertybulbul.com/post-requirement",
+    domain: "propertybulbul.com/post-requirement",
+    tags: ["Next.js", "Tailwind CSS"],
+  },
+  {
+    title: "Enquiry Records",
+    subtitle: "Real estate enquiry tracking",
+    description: "MERN-stack enquiry capture backed by MongoDB.",
+    image: "/images/projects/project3.png",
+    url: "https://www.propertybulbul.com/post-requirement",
+    domain: "propertybulbul.com",
+    tags: ["MongoDB", "Express", "React", "Node.js"],
+  },
+  {
+    title: "MedAssist",
+    subtitle: "AI voice consultation",
+    description: "Voice-driven medical consultation platform powered by Vapi.",
+    image: "/images/projects/project1.png",
+    url: "https://med-assist-omega.vercel.app/",
+    domain: "med-assist-omega.vercel.app",
+    tags: ["Next.js", "Vapi", "AI"],
+  },
+  {
+    title: "Anime Arena",
+    subtitle: "Anime game platform",
+    image: "/images/projects/project4.png",
+    url: "https://anime-dun-eight.vercel.app/",
+    domain: "anime-dun-eight.vercel.app",
+    tags: ["Next.js", "Tailwind CSS"],
+  },
+  {
+    title: "VermiGrows",
+    subtitle: "AI-powered e-commerce store",
+    description: "ML-assisted shopping experience for a sustainable goods store.",
+    image: "/images/projects/project6.png",
+    url: "https://vermigrows-client.vercel.app/",
+    domain: "vermigrows-client.vercel.app",
+    tags: ["Next.js", "Express.js", "AI/ML", "Tailwind CSS"],
+    featured: true,
+  },
+  {
+    title: "Post Mark",
+    subtitle: "AI-powered social media post generator",
+    description: "Generate engaging social media posts with AI assistance.Send posts on whatsapp, email, or download them for later use.",
+    image: "/images/projects/project7.png",
+    url: "#",
+    domain: "postmark.com",
+    tags: ["Next.js", "React"],
+  },
+];
+
 const AppShowcase = () => {
   const sectionRef = useRef(null);
-  const rydeRef = useRef(null);
-  const libraryRef = useRef(null);
-  const ycDirectoryRef = useRef(null);
+  const cardRefs = useRef([]);
+  cardRefs.current = [];
+
+  const addCardRef = (el) => {
+    if (el && !cardRefs.current.includes(el)) {
+      cardRefs.current.push(el);
+    }
+  };
 
   useGSAP(() => {
-    gsap.fromTo(
-      sectionRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 1.5 }
-    );
+    const mm = gsap.matchMedia();
 
-    const cards = [rydeRef.current, libraryRef.current, ycDirectoryRef.current];
-
-    cards.forEach((card, index) => {
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
       gsap.fromTo(
-        card,
-        {
-          y: 50,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          delay: 0.3 * (index + 1),
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom-=100",
-          },
-        }
+        sectionRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 1.2, ease: "power2.out" }
       );
+
+      cardRefs.current.forEach((card, index) => {
+        gsap.fromTo(
+          card,
+          { y: 60, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            delay: (index % 3) * 0.12,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom-=80",
+            },
+          }
+        );
+      });
     });
+
+    return () => mm.revert();
   }, []);
 
   return (
-    <div id="work" ref={sectionRef} className="app-showcase">
-      <div className="w-full">
-        <div className="showcaselayout">
-          <div ref={rydeRef} className="first-project-wrapper">
-            <div className="image-wrapper">
-              <a
-                href="https://propertybulbul.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="/images/project5.png"
-                  alt="Ryde App Interface"
-                  className="cursor-pointer hover:scale-105 transition-all duration-300 "
-                />
-              </a>
-            </div>
-            <div className="text-content">
-              <h2>PropertyBulbul -The Real Estate Listing Platform</h2>
-              <p className="text-white-50 md:text-xl">
-                An app built with Next.js, Express, & TailwindCSS for a fast,
-                user-friendly experience.
-              </p>
-            </div>
-          </div>
+    <section id="work" ref={sectionRef} className="app-showcase">
+      <div className="app-showcase__inner">
+        <p className="app-showcase__eyebrow">~/selected-work</p>
+        <h2 className="app-showcase__heading">Things I&apos;ve shipped</h2>
 
-          <div className="project-list-wrapper overflow-hidden">
-            <div className="project" ref={libraryRef}>
-              <div className="image-wrapper bg-[#FFEFDB]">
-                <a
-                  href="https://www.propertybulbul.com/post-requirement"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+        <div className="showcase-grid">
+          {PROJECTS.map((project, index) => (
+            <a
+              key={project.title}
+              ref={addCardRef}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`showcase-card ${
+                project.featured ? "showcase-card--featured" : ""
+              }`}
+            >
+              <div className="showcase-card__frame">
+                <div className="showcase-card__chrome">
+                  <span className="dot dot--red" />
+                  <span className="dot dot--yellow" />
+                  <span className="dot dot--green" />
+                  <span className="showcase-card__url">{project.domain}</span>
+                </div>
+                <div className="showcase-card__image-wrapper">
                   <img
-                    src="/images/project2.png"
-                    alt="Library Management Platform"
-                    className="cursor-pointer hover:scale-105 transition-all duration-300"
+                    src={project.image}
+                    alt={`${project.title} interface preview`}
+                    className="showcase-card__image"
+                    loading="lazy"
                   />
-                </a>
+                  <div className="showcase-card__overlay">
+                    <span className="showcase-card__visit">Visit site ↗</span>
+                  </div>
+                </div>
               </div>
-              <h2>The Library Management Platform</h2>
-            </div>
 
-            <div className="project" ref={ycDirectoryRef}>
-              <div className="image-wrapper bg-[#FFE7EB]">
-                <a
-                  href="https://www.propertybulbul.com/post-requirement"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="/images/project3.png"
-                    alt="Real Estate Page"
-                    className="cursor-pointer hover:scale-105 transition-all duration-300"
-                  />
-                </a>
+              <div className="showcase-card__body">
+                <h3 className="showcase-card__title">{project.title}</h3>
+                {project.subtitle && (
+                  <p className="showcase-card__subtitle">{project.subtitle}</p>
+                )}
+                {project.description && (
+                  <p className="showcase-card__description">
+                    {project.description}
+                  </p>
+                )}
+                {project.tags && (
+                  <ul className="showcase-card__tags">
+                    {project.tags.map((tag) => (
+                      <li key={tag} className="showcase-card__tag">
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
-              <h2>
-                Real Estate Enquiry page using MERN Stack (MongoDB) to record
-                enquiries.{" "}
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div className="showcaselayout mt-10">
-          <div className="project-list-wrapper overflow-hidden">
-            <div className="project" ref={libraryRef}>
-              <div className="image-wrapper bg-[#FFEFDB]">
-                <a
-                  href="https://med-assist-omega.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="/images/project1.png"
-                    className="cursor-pointer hover:scale-105 transition-all duration-300"
-                    alt="Realestate Listing Platform"
-                  />
-                </a>
-              </div>
-              <h2>
-                {" "}
-                An AI-powered Medical voice consultation platform using Vapi and
-                Next.js
-              </h2>
-            </div>
-
-            <div className="project" ref={ycDirectoryRef}>
-              <div className="image-wrapper bg-[#FFE7EB]">
-                <a
-                  href="https://anime-dun-eight.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="/images/project4.png"
-                    alt="Real Estate Page"
-                    className="cursor-pointer hover:scale-105 transition-all duration-300"
-                  />
-                </a>{" "}
-              </div>
-              <h2>An Anime Game Platform</h2>
-            </div>
-          </div>
-
-          <div ref={rydeRef} className="first-project-wrapper">
-            <div className="image-wrapper">
-              <a
-                href="https://vermigrows-client.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="/images/project6.png"
-                  alt="Ryde App Interface"
-                  className="cursor-pointer hover:scale-105 transition-all duration-300"
-                />
-              </a>{" "}
-            </div>
-            <div className="text-content">
-              <h2>
-                An AI-powered E-commerce Store using AI/ML Model and Next.js
-              </h2>
-              <p className="text-white-50 md:text-xl">
-                An app built with Next.js, Express.js, & TailwindCSS for a fast,
-                user-friendly experience.
-              </p>
-            </div>
-          </div>
+            </a>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

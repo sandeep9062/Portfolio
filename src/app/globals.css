@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -157,51 +158,206 @@ section {
   }
 
   .app-showcase {
-    @apply w-full mt-20 px-5 md:px-20 py-10 md:py-20 flex items-center justify-center;
+    @apply relative;
+    isolation: isolate;
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem);
+    background: linear-gradient(to bottom, #0e0e10, #1c1c21);
+    color: #edebe6;
 
-    .showcaselayout {
-      @apply flex xl:flex-row flex-col gap-10 justify-between;
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+      background-size: 22px 22px;
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+      pointer-events: none;
     }
 
-    .first-project-wrapper {
-      @apply h-full flex flex-col justify-between xl:w-[60%];
-
-      .image-wrapper {
-        @apply xl:h-[70vh] md:h-[50vh] h-96 relative;
-
-        img {
-          @apply w-full h-full object-cover rounded-xl absolute inset-0;
-        }
-      }
-
-      .text-content {
-        @apply space-y-5 mt-5;
-
-        .badges {
-          @apply flex gap-2 mb-4;
-        }
-
-        h2 {
-          @apply text-2xl md:text-3xl lg:text-4xl font-bold;
-        }
-      }
+    .app-showcase__inner {
+      position: relative;
+      max-width: 1280px;
+      margin: 0 auto;
     }
 
-    .project-list-wrapper {
-      @apply flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%];
+    .app-showcase__eyebrow {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: #5fd4c4;
+      margin-bottom: 0.75rem;
+    }
 
-      .image-wrapper {
-        @apply xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl xl:px-5 2xl:px-12 py-0;
+    .app-showcase__heading {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      max-width: 20ch;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .showcase-card {
+      display: flex;
+      flex-direction: column;
+      grid-column: span 1;
+      border-radius: 16px;
+      background: #0e0e10;
+      border: 1px solid #1c1c21;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+
+      &--featured {
+        grid-column: span 2;
       }
 
-      img {
-        @apply w-full h-full object-contain rounded-xl;
+      &:hover,
+      &:focus-visible {
+        transform: translateY(-4px);
+        border-color: rgba(232, 184, 84, 0.5);
+        box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
       }
 
-      h2 {
-        @apply text-lg md:text-xl lg:text-2xl font-semibold mt-5;
+      &:focus-visible {
+        outline: 2px solid #e8b854;
+        outline-offset: 2px;
+      }
+
+      .showcase-card__frame {
+        background: #f5f3ee;
+      }
+
+      .showcase-card__chrome {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.6rem 0.8rem;
+        background: #ece8df;
+        border-bottom: 1px solid #ddd7c8;
+      }
+
+      .showcase-card__url {
+        margin-left: 0.6rem;
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 0.72rem;
+        color: #71695a;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .showcase-card__image-wrapper {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
+      }
+
+      .showcase-card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      &:hover .showcase-card__image {
+        transform: scale(1.05);
+      }
+
+      .showcase-card__overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 0.9rem;
+        background: linear-gradient(to top, rgba(13, 16, 23, 0.55), transparent 55%);
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+
+      &:hover .showcase-card__overlay {
+        opacity: 1;
+      }
+
+      .showcase-card__visit {
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 0.75rem;
+        color: #0d1017;
+        background: #e8b854;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+      }
+
+      .showcase-card__body {
+        padding: 1.25rem 1.4rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .showcase-card__title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.15rem;
+        font-weight: 600;
+      }
+
+      .showcase-card__subtitle {
+        font-size: 0.85rem;
+        color: #5fd4c4;
+      }
+
+      .showcase-card__description {
+        font-size: 0.9rem;
+        color: #839cb5;
+        line-height: 1.5;
+      }
+
+      .showcase-card__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.5rem;
+        list-style: none;
+        padding: 0;
+      }
+
+      .showcase-card__tag {
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 0.7rem;
+        color: #edebe6;
+        background: #282732;
+        border: 1px solid #1c1c21;
+        padding: 0.25rem 0.55rem;
+        border-radius: 999px;
       }
     }
+  }
+
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+  }
+
+  .dot--red {
+    background: #ec6a5e;
+  }
+
+  .dot--yellow {
+    background: #f4bf4f;
+  }
+
+  .dot--green {
+    background: #61c554;
   }
 
   .cta-wrapper {
@@ -471,4 +627,27 @@ section {
 
 .card:hover::before {
   opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+  .showcase-card--featured {
+    grid-column: span 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-card,
+  .showcase-card__image,
+  .showcase-card__overlay {
+    transition: none;
+  }
 }
