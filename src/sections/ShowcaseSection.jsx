@@ -40,6 +40,7 @@ const PROJECTS = [
     url: "#",
     domain: "postmark.com",
     tags: ["Next.js", "React"],
+    featured: true,
   },
 
 
@@ -101,6 +102,7 @@ const PROJECTS = [
   {
     title: "Anime Arena",
     subtitle: "Anime game platform",
+    description: "A platform for anime enthusiasts to play games and engage with the community.",
     image: "/images/projects/project4.png",
     url: "https://anime-dun-eight.vercel.app/",
     domain: "anime-dun-eight.vercel.app",

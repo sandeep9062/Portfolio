@@ -199,8 +199,8 @@ section {
 
     .showcase-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
     }
 
     .showcase-card {
@@ -629,9 +629,12 @@ section {
   opacity: 1;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .showcase-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+  }
+  .showcase-card--featured {
+    grid-column: span 1;
   }
 }
 
