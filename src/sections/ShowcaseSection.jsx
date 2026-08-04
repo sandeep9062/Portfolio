@@ -44,6 +44,22 @@ const PROJECTS = [
   },
 
 
+ {
+    title: "Social MatchMate Flutter App",
+    subtitle: "a matchmaker platform for people having similar schedule and interests",
+    description: " A mobile application built with Flutter that connects users based on shared schedules and interests, facilitating meaningful connections.",
+    image: "/images/projects/project10.png",
+    url: " https://play.google.com/store/apps/details?id=com.socialmatchmate.app",
+    domain: "play.google.com/store/apps/details?id=com.socialmatchmate.app",
+    tags: [ "Flutter", "Firebase", "Dart","Nodejs", "Express"],
+    featured: true,
+  },
+
+
+
+
+
+
 
   // {
   //   title: "Dental Tourism Clinics India",
