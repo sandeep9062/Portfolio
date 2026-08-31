@@ -92,7 +92,7 @@ const PROJECTS = [
     title: "Post a Requirement",
     subtitle: "Requirement intake flow",
     description: "Streamlined form for posting new property requirements.",
-    image: "/images/projects/project2.png",
+    image: "/images/projects/project3.png",
     url: "https://www.propertybulbul.com/post-requirement",
     domain: "propertybulbul.com/post-requirement",
     tags: ["Next.js", "Tailwind CSS"],
