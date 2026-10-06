@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef } from "react";
 
 const GlowCard = ({ card, index, children }) => {
@@ -25,10 +26,10 @@ const GlowCard = ({ card, index, children }) => {
       onMouseMove={handleMouseMove(index)}
       className="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column"
     >
-      <div className="glow"></div>
-      <div className="flex items-center gap-1 mb-5">
+      <div className="glow" aria-hidden="true"></div>
+      <div className="flex items-center gap-1 mb-5" aria-label="Rated 5 out of 5 stars" role="img">
         {Array.from({ length: 5 }, (_, i) => (
-          <img key={i} src="/images/star.png" alt="star" className="size-5" />
+          <Image key={i} src="/images/icon-rating-star.png" alt="" width={22} height={20} loading="lazy" className="size-5" unoptimized />
         ))}
       </div>
       <div className="mb-5">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -13,7 +14,7 @@ const PROJECTS = [
     subtitle: "Real estate listing platform",
     description:
       "A fast, user-friendly experience for browsing and posting property listings.",
-    image: "/images/projects/project5.png",
+    image: "/images/projects/project-propertybulbul.png",
     url: "https://propertybulbul.com/",
     domain: "propertybulbul.com",
     tags: ["Next.js", "Express", "Tailwind CSS"],
@@ -25,7 +26,7 @@ const PROJECTS = [
     subtitle: "printing and gifting platform, multivendor marketplace",
     description:
       "platform for printing and gifting, allowing users to create personalized gifts and print materials.",
-    image: "/images/projects/project8.png",
+    image: "/images/projects/project-inkofmemories.png",
     url: "https://inkofmemories.com/",
     domain: "inkofmemories.com",
     tags: ["Next.js", "Express","Nodejs", "Tailwind CSS"],
@@ -36,7 +37,7 @@ const PROJECTS = [
     title: "Post Mark",
     subtitle: "AI-powered social media post generator",
     description: "Generate engaging social media posts with AI assistance.Send posts on whatsapp, email, or download them for later use.",
-    image: "/images/projects/project7.png",
+    image: "/images/projects/project-postmark-ai.png",
     url: "#",
     domain: "postmark.com",
     tags: ["Next.js", "React"],
@@ -48,7 +49,7 @@ const PROJECTS = [
     title: "Social MatchMate Flutter App",
     subtitle: "a matchmaker platform for people having similar schedule and interests",
     description: " A mobile application built with Flutter that connects users based on shared schedules and interests, facilitating meaningful connections.",
-    image: "/images/projects/project10.png",
+    image: "/images/projects/project-social-matchmate-app.png",
     url: " https://play.google.com/store/apps/details?id=com.socialmatchmate.app",
     domain: "play.google.com/store/apps/details?id=com.socialmatchmate.app",
     tags: [ "Flutter", "Firebase", "Dart","Nodejs", "Express"],
@@ -66,7 +67,7 @@ const PROJECTS = [
   //   subtitle: "dental tourism and clinic platform with multivendor marketplace ",
   //   description:
   //     "A platform for dental tourism and clinics, allowing users to find and book dental services in India.",
-  //   image: "/images/projects/project9.png",
+  //   image: "/images/projects/project-dental-tourism-india.png",
   //   url: "https://dentaltourismclinicsindia.com/",
   //   domain: "dentaltourismclinicsindia.com",
   //   tags: ["Next.js", "Express","Nodejs", "Tailwind CSS", "MongoDB" ,"Cloudinary"],
@@ -82,7 +83,7 @@ const PROJECTS = [
     title: "VermiGrows",
     subtitle: "AI-powered e-commerce store",
     description: "ML-assisted shopping experience for a sustainable goods store.",
-    image: "/images/projects/project6.png",
+    image: "/images/projects/project-vermigrows.png",
     url: "https://vermigrows-client.vercel.app/",
     domain: "vermigrows-client.vercel.app",
     tags: ["Next.js", "Express.js", "AI/ML", "Tailwind CSS"],
@@ -92,7 +93,7 @@ const PROJECTS = [
     title: "Post a Requirement",
     subtitle: "Requirement intake flow",
     description: "Streamlined form for posting new property requirements.",
-    image: "/images/projects/project3.png",
+    image: "/images/projects/project-post-requirement.png",
     url: "https://www.propertybulbul.com/post-requirement",
     domain: "propertybulbul.com/post-requirement",
     tags: ["Next.js", "Tailwind CSS"],
@@ -101,7 +102,7 @@ const PROJECTS = [
   //   title: "Enquiry Records",
   //   subtitle: "Real estate enquiry tracking",
   //   description: "MERN-stack enquiry capture backed by MongoDB.",
-  //   image: "/images/projects/project3.png",
+  //   image: "/images/projects/project-post-requirement.png",
   //   url: "https://www.propertybulbul.com/post-requirement",
   //   domain: "propertybulbul.com",
   //   tags: ["MongoDB", "Express", "React", "Node.js"],
@@ -110,7 +111,7 @@ const PROJECTS = [
     title: "MedAssist",
     subtitle: "AI voice consultation",
     description: "Voice-driven medical consultation platform powered by Vapi.",
-    image: "/images/projects/project1.png",
+    image: "/images/projects/project-medassist.png",
     url: "https://med-assist-omega.vercel.app/",
     domain: "med-assist-omega.vercel.app",
     tags: ["Next.js", "Vapi", "AI"],
@@ -119,7 +120,7 @@ const PROJECTS = [
     title: "Anime Arena",
     subtitle: "Anime game platform",
     description: "A platform for anime enthusiasts to play games and engage with the community.",
-    image: "/images/projects/project4.png",
+    image: "/images/projects/project-anime-arena.png",
     url: "https://anime-dun-eight.vercel.app/",
     domain: "anime-dun-eight.vercel.app",
     tags: ["Next.js", "Tailwind CSS"],
@@ -172,10 +173,20 @@ const AppShowcase = () => {
   }, []);
 
   return (
-    <section id="work" ref={sectionRef} className="app-showcase">
+    <section
+      id="work"
+      ref={sectionRef}
+      aria-label="Selected work and projects"
+      className="app-showcase"
+    >
       <div className="app-showcase__inner">
         <p className="app-showcase__eyebrow">~/selected-work</p>
         <h2 className="app-showcase__heading">Things I&apos;ve shipped</h2>
+        <p className="sr-only">
+          Selected web development projects by Sandeep Saini, including
+          PropertyBulbul, InkofMemories, VermiGrows and client work built with
+          Next.js, React, Node.js and Flutter.
+        </p>
 
         <div className="showcase-grid">
           {PROJECTS.map((project, index) => (
@@ -185,25 +196,28 @@ const AppShowcase = () => {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`${project.title} — ${project.subtitle}. Opens in a new tab.`}
               className={`showcase-card ${
                 project.featured ? "showcase-card--featured" : ""
               }`}
             >
               <div className="showcase-card__frame">
-                <div className="showcase-card__chrome">
+                <div className="showcase-card__chrome" aria-hidden="true">
                   <span className="dot dot--red" />
                   <span className="dot dot--yellow" />
                   <span className="dot dot--green" />
                   <span className="showcase-card__url">{project.domain}</span>
                 </div>
                 <div className="showcase-card__image-wrapper">
-                  <img
+                  <Image
                     src={project.image}
-                    alt={`${project.title} interface preview`}
+                    alt={`${project.title} — ${project.subtitle} interface preview`}
                     className="showcase-card__image"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                     loading="lazy"
                   />
-                  <div className="showcase-card__overlay">
+                  <div className="showcase-card__overlay" aria-hidden="true">
                     <span className="showcase-card__visit">Visit site ↗</span>
                   </div>
                 </div>

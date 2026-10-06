@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
@@ -18,9 +19,15 @@ const Hero = () => {
   });
 
   return (
-    <section id="hero" className="relative overflow-hidden">
-      <div className="absolute top-0 left-0 z-10">
-        <img src="/images/bg.png" alt="image" />
+    <section id="hero" aria-label="Introduction" className="relative overflow-hidden">
+      <div aria-hidden="true" className="absolute top-0 left-0 z-10">
+        <Image
+          src="/images/hero-background.png"
+          alt=""
+          width={418}
+          height={327}
+          priority
+        />
       </div>
 
       <div className="hero-layout">
@@ -37,9 +44,13 @@ const Hero = () => {
                         key={index}
                         className="flex items-center md:gap-3 gap-1 pb-2"
                       >
-                        <img
+                        <Image
                           src={word.imgPath}
-                          alt="person"
+                          alt={`${word.text} icon`}
+                          width={48}
+                          height={48}
+                          priority={index === 0}
+                          loading={index === 0 ? undefined : "lazy"}
                           className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white-50"
                         />
                         <span>{word.text}</span>
@@ -48,13 +59,17 @@ const Hero = () => {
                   </span>
                 </span>
               </h1>
-              <h1>into Real Projects</h1>
-              <h1>that Deliver Results</h1>
+              <p aria-hidden="true" className="hero-continuation">
+                into Real Projects
+              </p>
+              <p aria-hidden="true" className="hero-continuation">
+                that Deliver Results
+              </p>
             </div>
 
             <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-              Hi, I'm Sandeep Saini, a developer based in TRICITY with a passion for
-              code.
+              Hi, I&apos;m Sandeep Saini, a Full Stack Developer based in
+              Tricity with a passion for code.
             </p>
 
             <Button

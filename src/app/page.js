@@ -15,14 +15,16 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <ShowcaseSection />
-      <LogoShowcase />
-      <FeatureCards />
-      <Experience />
-      <TechStack />
-      <Testimonials />
-      <Contact />
+      <main id="main-content">
+        <Hero />
+        <ShowcaseSection />
+        <LogoShowcase />
+        <FeatureCards />
+        <Experience />
+        <TechStack />
+        <Testimonials />
+        <Contact />
+      </main>
       <Footer />
       <WhatsAppWidget />
       <Toaster position="bottom-center" />

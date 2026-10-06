@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
@@ -29,7 +30,11 @@ const TechStack = () => {
   });
 
   return (
-    <div id="skills" className="flex-center section-padding">
+    <section
+      id="skills"
+      aria-label="Technical skills and technology stack"
+      className="flex-center section-padding"
+    >
       <div className="w-full h-full md:px-10 px-5">
         <TitleHeader
           title="How I Can Contribute & My Key Skills"
@@ -41,10 +46,17 @@ const TechStack = () => {
               key={index}
               className="card-border tech-card overflow-hidden group rounded-lg"
             >
-              <div className="tech-card-animated-bg" />
+              <div className="tech-card-animated-bg" aria-hidden="true" />
               <div className="tech-card-content">
                 <div className="tech-icon-wrapper">
-                  <img src={techStackIcon.imgPath} alt="" />
+                  <Image
+                    src={techStackIcon.imgPath}
+                    alt={`${techStackIcon.name} logo`}
+                    width={144}
+                    height={144}
+                    loading="lazy"
+                    className="h-auto w-auto max-h-full max-w-full"
+                  />
                 </div>
                 <div className="padding-x w-full">
                   <p>{techStackIcon.name}</p>
@@ -54,7 +66,7 @@ const TechStack = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

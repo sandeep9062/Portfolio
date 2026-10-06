@@ -18,14 +18,14 @@ const navLinks = [
 ];
 
 const words = [
-  { text: "Ideas", imgPath: "/images/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/concepts.svg" },
-  { text: "Designs", imgPath: "/images/designs.svg" },
-  { text: "Code", imgPath: "/images/code.svg" },
-  { text: "Ideas", imgPath: "/images/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/concepts.svg" },
-  { text: "Designs", imgPath: "/images/designs.svg" },
-  { text: "Code", imgPath: "/images/code.svg" },
+  { text: "Ideas", imgPath: "/images/hero-word-ideas.svg" },
+  { text: "Concepts", imgPath: "/images/hero-word-concepts.svg" },
+  { text: "Designs", imgPath: "/images/hero-word-designs.svg" },
+  { text: "Code", imgPath: "/images/hero-word-code.svg" },
+  { text: "Ideas", imgPath: "/images/hero-word-ideas.svg" },
+  { text: "Concepts", imgPath: "/images/hero-word-concepts.svg" },
+  { text: "Designs", imgPath: "/images/hero-word-designs.svg" },
+  { text: "Code", imgPath: "/images/hero-word-code.svg" },
 ];
 
 const counterItems = [
@@ -37,53 +37,53 @@ const counterItems = [
 
 const logoIconsList = [
   {
-    imgPath: "/images/logos/company-logo-1.png",
+    imgPath: "/images/logos/client-logo-01.png",
   },
   {
-    imgPath: "/images/logos/company-logo-2.png",
+    imgPath: "/images/logos/client-logo-02.png",
   },
   {
-    imgPath: "/images/logos/company-logo-3.png",
+    imgPath: "/images/logos/client-logo-03.png",
   },
   {
-    imgPath: "/images/logos/company-logo-4.png",
+    imgPath: "/images/logos/client-logo-04.png",
   },
   {
-    imgPath: "/images/logos/company-logo-5.png",
+    imgPath: "/images/logos/client-logo-05.png",
   },
   {
-    imgPath: "/images/logos/company-logo-6.png",
+    imgPath: "/images/logos/client-logo-06.png",
   },
   {
-    imgPath: "/images/logos/company-logo-7.png",
+    imgPath: "/images/logos/client-logo-07.png",
   },
   {
-    imgPath: "/images/logos/company-logo-8.png",
+    imgPath: "/images/logos/client-logo-08.png",
   },
   {
-    imgPath: "/images/logos/company-logo-9.png",
+    imgPath: "/images/logos/client-logo-09.png",
   },
   {
-    imgPath: "/images/logos/company-logo-10.png",
+    imgPath: "/images/logos/client-logo-10.png",
   },
   {
-    imgPath: "/images/logos/company-logo-11.png",
+    imgPath: "/images/logos/client-logo-11.png",
   },
 ];
 
 const abilities = [
   {
-    imgPath: "/images/seo.png",
+    imgPath: "/images/feature-quality-focus.png",
     title: "Quality Focus",
     desc: "Delivering high-quality results while maintaining attention to every detail.",
   },
   {
-    imgPath: "/images/chat.png",
+    imgPath: "/images/feature-communication.png",
     title: "Reliable Communication",
     desc: "Keeping you updated at every step to ensure transparency and clarity.",
   },
   {
-    imgPath: "/images/time.png",
+    imgPath: "/images/feature-on-time-delivery.png",
     title: "On-Time Delivery",
     desc: "Making sure projects are completed on schedule, with quality & attention to detail.",
   },
@@ -92,23 +92,23 @@ const abilities = [
 const techStackImgs = [
   {
     name: "MERN Stack",
-    imgPath: "/images/logos/react.png",
+    imgPath: "/images/logos/tech-react.png",
   },
   {
     name: "Python",
-    imgPath: "/images/logos/python.svg",
+    imgPath: "/images/logos/tech-python.svg",
   },
   {
     name: "Node.js Backend",
-    imgPath: "/images/logos/Nodejs.svg",
+    imgPath: "/images/logos/tech-nodejs.svg",
   },
   {
     name: "Next.js",
-    imgPath: "/images/logos/Nextjs.svg",
+    imgPath: "/images/logos/tech-nextjs.svg",
   },
   {
     name: "TailwindCSS",
-    imgPath: "/images/logos/tailwind-css.svg",
+    imgPath: "/images/logos/tech-tailwindcss.svg",
   },
 ];
 
@@ -149,8 +149,8 @@ const expCards = [
   {
     review:
       "During my Master's in Computer Applications, I gained strong foundations in software engineering, programming, and system design. This academic journey allowed me to combine theoretical knowledge with practical projects that shaped my technical expertise.",
-    imgPath: "/images/exp1.png",
-    logoPath: "/images/logo1.png",
+    imgPath: "/images/experience-mca-education.png",
+    logoPath: "/images/experience-logo-mca.png",
     title: "Masters of Computer Applications",
     date: "June 2023 - July 2025",
     responsibilities: [
@@ -162,8 +162,8 @@ const expCards = [
   {
     review:
       "As a Full Stack Developer , I played a key role in designing and building scalable applications, delivering high-performance solutions that met business and user needs.",
-    imgPath: "/images/exp2.png",
-    logoPath: "/images/logo2.png",
+    imgPath: "/images/experience-full-stack-developer.png",
+    logoPath: "/images/experience-logo-full-stack.png",
     title: "Full Stack Developer",
     date: "January 2025 - Present",
     responsibilities: [
@@ -175,8 +175,8 @@ const expCards = [
   {
     review:
       "I worked as a MERN Stack Developer, focusing on building robust APIs and enhancing system performance. My contributions ensured reliability and efficiency for end-users.",
-    imgPath: "/images/exp3.png",
-    logoPath: "/images/logo3.png",
+    imgPath: "/images/experience-mern-developer.png",
+    logoPath: "/images/experience-logo-mern.png",
     title: "MERN Stack Developer",
     date: "March 2022 - June 2023",
     responsibilities: [
@@ -190,15 +190,15 @@ const expCards = [
 const expLogos = [
   {
     name: "logo1",
-    imgPath: "/images/logo1.png",
+    imgPath: "/images/logos/client-logo-01.png",
   },
   {
     name: "logo2",
-    imgPath: "/images/logo2.png",
+    imgPath: "/images/logos/client-logo-02.png",
   },
   {
     name: "logo3",
-    imgPath: "/images/logo3.png",
+    imgPath: "/images/logos/client-logo-03.png",
   },
 ];
 
@@ -208,64 +208,64 @@ const testimonials = [
     mentions: "@priyankasharma01",
     review:
       "I can't say enough good things about Sandeep Saini. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.",
-    imgPath: "/images/client1.png",
+    imgPath: "/images/testimonial-priyanka-sharma.png",
   },
   {
     name: "Medul",
     mentions: "@medul_himachal",
     review:
       "Working with Sandeep Saini was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.",
-    imgPath: "/images/client3.png",
+    imgPath: "/images/testimonial-medul.png",
   },
   {
     name: "Vikram Singh",
     mentions: "@vikram_singh_87",
     review:
       "Collaborating with Sandeep Saini was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Sandeep Saini's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Sandeep Saini is the ideal partner.",
-    imgPath: "/images/client2.png",
+    imgPath: "/images/testimonial-vikram-singh.png",
   },
   {
     name: "Gurjinder Singh",
     mentions: "@guri__91_t",
     review:
       "Sandeep Saini was a pleasure to work with. He turned our outdated website into a fresh, intuitive platform that's both modern and easy to navigate. Fantastic work overall.",
-    imgPath: "/images/client5.png",
+    imgPath: "/images/testimonial-gurjinder-singh.png",
   },
   {
     name: "Charanjeet Kaur",
     mentions: "@charan_saini_23",
     review:
       "Sandeep Saini's expertise in web development is truly impressive. He delivered a robust and scalable solution for our e-commerce site, and our online sales have significantly increased since the launch. He's a true professional!",
-    imgPath: "/images/client4.png",
+    imgPath: "/images/testimonial-charanjeet-kaur.png",
   },
   {
     name: "Ankita Rana",
     mentions: "@ankita._rana",
     review:
       "Sandeep Saini was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend and backend dev are top-notch.",
-    imgPath: "/images/client6.png",
+    imgPath: "/images/testimonial-ankita-rana.png",
   },
 ];
 
 const socialImgs = [
   {
     name: "insta",
-    imgPath: "/images/insta.png",
+    imgPath: "/images/social-instagram.png",
     link: "https://www.instagram.com/sandeep01saini?igsh=Z3l2bmltZmM3cm9m",
   },
   {
     name: "fb",
-    imgPath: "/images/fb.png",
+    imgPath: "/images/social-facebook.png",
     link: "https://www.instagram.com/sandeep01saini?igsh=Z3l2bmltZmM3cm9m",
   },
   {
     name: "x",
-    imgPath: "/images/x.png",
+    imgPath: "/images/social-x.png",
     link: "https://www.linkedin.com/in/sandeep-saini-a6309924a/",
   },
   {
     name: "linkedin",
-    imgPath: "/images/linkedin.png",
+    imgPath: "/images/social-linkedin.png",
     link: "https://www.linkedin.com/in/sandeep-saini-a6309924a/",
   },
 ];

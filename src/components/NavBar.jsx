@@ -20,24 +20,24 @@ const NavBar = () => {
   return (
     <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
       <div className="inner">
-        <a href="#hero" className="logo">
+        <a href="#hero" className="logo" aria-label="Sandeep Saini — back to top">
           Sandeep Saini
         </a>
 
-        <nav className="desktop">
+        <nav className="desktop" aria-label="Primary">
           <ul>
             {navLinks.map(({ link, name }) => (
               <li key={name} className="group">
-                <a href={link}>
+                <a href={link} aria-label={`Go to ${name} section`}>
                   <span>{name}</span>
-                  <span className="underline" />
+                  <span className="underline" aria-hidden="true" />
                 </a>
               </li>
             ))}
           </ul>
         </nav>
 
-        <a href="#contact" className="contact-btn group">
+        <a href="#contact" className="contact-btn group" aria-label="Contact Sandeep Saini">
           <div className="inner">
             <span>Contact me</span>
           </div>

@@ -1,32 +1,40 @@
+import Image from "next/image";
 import { socialImgs } from "@/constants";
 
 const Footer = () => {
   return (
-    <footer className="footer border-t border-black-50 pt-10">
+    <footer className="footer border-t border-black-50 pt-10" aria-label="Footer">
       <div className="footer-container">
         <div className="flex flex-col justify-center">
           <p className="cursor-pointer transition-colors duration-300 hover:text-primary-accent">
             Terms & Conditions
           </p>
+          <p className="text-white-50 text-sm mt-2">
+            Full Stack Developer — MERN, Next.js, Node.js · Tricity, India
+          </p>
         </div>
-        <div className="socials">
+        <nav className="socials" aria-label="Social media profiles">
           {socialImgs.map((socialImg, index) => (
             <a
               href={socialImg.link}
               key={index}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer me"
+              aria-label={`Sandeep Saini on ${socialImg.name} (opens in a new tab)`}
             >
               <div className="icon group transition-all duration-300 hover:border-primary-accent">
-                <img
+                <Image
                   src={socialImg.imgPath}
-                  alt="social icon"
+                  alt={`${socialImg.name} profile icon`}
+                  width={20}
+                  height={20}
+                  loading="lazy"
                   className="transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
             </a>
           ))}
-        </div>
+        </nav>
         <div className="flex flex-col justify-center">
           <p className="text-center md:text-end">
             © {new Date().getFullYear()} Sandeep Saini. All rights reserved.

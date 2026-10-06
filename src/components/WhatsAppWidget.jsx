@@ -20,6 +20,7 @@ export default function WhatsAppWidget() {
             ? "opacity-100 translate-y-0 mb-4"
             : "opacity-0 translate-y-4 pointer-events-none"
         } w-80 bg-white rounded-xl shadow-xl`}
+        aria-hidden={!isOpen}
       >
         {/* Header */}
         <div className="bg-[#1A1A1A] text-white p-4 flex items-start rounded-t-xl">
@@ -61,6 +62,8 @@ export default function WhatsAppWidget() {
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "Close WhatsApp chat widget" : "Open WhatsApp chat with Sandeep Saini"}
+        aria-expanded={isOpen}
         className="bg-[#1A1A1A] hover:bg-gray-600 p-4 rounded-full shadow-xl text-white transition duration-300"
       >
         {isOpen ? (

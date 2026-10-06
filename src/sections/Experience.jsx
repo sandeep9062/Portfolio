@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -58,6 +59,7 @@ const Experience = () => {
   return (
     <section
       id="experience"
+      aria-label="Education and professional work experience"
       className="flex-center md:mt-40 mt-20 section-padding xl:px-0"
     >
       <div className="w-full h-full md:px-20 px-5">
@@ -78,17 +80,20 @@ const Experience = () => {
               >
                 <div className="md:w-1/2 w-full p-4 flex justify-center">
                   <GlowCard card={card}>
-                    <div className="w-full h-auto">
-                      <img
+                    <div className="relative w-full aspect-video h-auto">
+                      <Image
                         src={card.imgPath}
-                        alt="experience-img"
-                        className="w-full h-full object-cover rounded-xl"
+                        alt={`${card.title} — ${card.date}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        loading="lazy"
+                        className="object-cover rounded-xl"
                       />
                     </div>
                   </GlowCard>
                 </div>
 
-                <div className="absolute hidden md:block w-4 h-4 rounded-full bg-blue-500 timeline-dot left-1/2 -translate-x-1/2">
+                <div aria-hidden="true" className="absolute hidden md:block w-4 h-4 rounded-full bg-blue-500 timeline-dot left-1/2 -translate-x-1/2">
                   <div className="w-full h-full rounded-full bg-blue-500 blur-sm animate-pulse" />
                 </div>
 
@@ -97,7 +102,7 @@ const Experience = () => {
                     index % 2 === 0 ? "md:pr-16 text-right" : "md:pl-16 text-left"
                   }`}
                 >
-                  <h1 className="font-semibold text-3xl mb-2">{card.title}</h1>
+                  <h3 className="font-semibold text-3xl mb-2">{card.title}</h3>
                   <p className="my-5 text-white-50">🗓️&nbsp;{card.date}</p>
                   <p className="text-[#839CB5] italic mb-3">Responsibilities</p>
                   <ul className="list-disc ms-5 flex flex-col gap-3 text-white-50 text-left">

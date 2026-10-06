@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { createMessage } from "@/lib/actions/messageActions";
@@ -55,7 +56,11 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="flex-center section-padding">
+    <section
+      id="contact"
+      aria-label="Contact Sandeep Saini"
+      className="flex-center section-padding"
+    >
       <div className="w-full h-full md:px-10 px-5">
         <TitleHeader
           title="Get in Touch – Let's Connect"
@@ -120,14 +125,14 @@ const Contact = () => {
                   />
                 </div>
 
-                <button type="submit" disabled={loading}>
+                <button type="submit" disabled={loading} aria-label="Send contact message to Sandeep Saini">
                   <div className="cta-button group">
-                    <div className="bg-circle" />
+                    <div className="bg-circle" aria-hidden="true" />
                     <p className="text">
                       {loading ? "Sending..." : "Send Message"}
                     </p>
-                    <div className="arrow-wrapper">
-                      <img src="/images/arrow-down.svg" alt="arrow" />
+                    <div className="arrow-wrapper" aria-hidden="true">
+                      <Image src="/images/icon-arrow-down.svg" alt="" width={18} height={18} loading="lazy" unoptimized />
                     </div>
                   </div>
                 </button>
