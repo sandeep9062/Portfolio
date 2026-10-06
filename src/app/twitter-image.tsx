@@ -21,7 +21,7 @@ export default function TwitterImage() {
           justifyContent: "center",
           padding: "80px",
           backgroundColor: "#0e0e10",
-          color: "white",
+          color: "#ededf0",
           fontFamily: "sans-serif",
         }}
       >
@@ -30,7 +30,7 @@ export default function TwitterImage() {
             display: "flex",
             fontSize: 28,
             letterSpacing: 4,
-            color: "#62e0ff",
+            color: "#5eead4",
             marginBottom: 24,
           }}
         >
@@ -47,7 +47,7 @@ export default function TwitterImage() {
           Full Stack Developer — MERN &amp; Next.js
         </div>
         <div
-          style={{ display: "flex", marginTop: 28, fontSize: 28, color: "#d9ecff" }}
+          style={{ display: "flex", marginTop: 28, fontSize: 28, color: "#9a9aa6" }}
         >
           Selected work · Experience · Skills · Testimonials
         </div>

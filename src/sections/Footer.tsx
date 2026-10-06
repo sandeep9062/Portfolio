@@ -3,13 +3,13 @@ import { socialImgs } from "@/constants";
 
 const Footer = () => {
   return (
-    <footer className="footer border-t border-black-50 pt-10" aria-label="Footer">
+    <footer className="footer border-t border-border pt-10" aria-label="Footer">
       <div className="footer-container">
         <div className="flex flex-col justify-center">
-          <p className="cursor-pointer transition-colors duration-300 hover:text-primary-accent">
+          <p className="cursor-pointer transition-colors duration-300 hover:text-accent">
             Terms & Conditions
           </p>
-          <p className="text-white-50 text-sm mt-2">
+          <p className="text-muted text-sm mt-2">
             Full Stack Developer — MERN, Next.js, Node.js · Tricity, India
           </p>
         </div>
@@ -22,7 +22,7 @@ const Footer = () => {
               rel="noopener noreferrer me"
               aria-label={`Sandeep Saini on ${socialImg.name} (opens in a new tab)`}
             >
-              <div className="icon group transition-all duration-300 hover:border-primary-accent">
+              <div className="icon group transition-all duration-300 hover:border-accent">
                 <Image
                   src={socialImg.imgPath}
                   alt={`${socialImg.name} profile icon`}

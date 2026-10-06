@@ -18,8 +18,8 @@ const FeatureCards = () => (
               loading="lazy"
             />
           </div>
-          <h3 className="text-white text-2xl font-semibold mt-2">{title}</h3>
-          <p className="text-white-50 text-lg">{desc}</p>
+          <h3 className="font-display tracking-tight text-foreground text-2xl font-semibold mt-2">{title}</h3>
+          <p className="text-muted text-lg">{desc}</p>
         </article>
       ))}
     </div>

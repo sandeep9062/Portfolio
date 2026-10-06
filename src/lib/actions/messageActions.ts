@@ -41,19 +41,33 @@ export async function createMessage(formData: FormData) {
       typeof name !== "string" ||
       typeof email !== "string" ||
       typeof message !== "string" ||
+      typeof contactno !== "string" ||
       !name ||
       !email ||
-      !message
+      !message ||
+      !contactno
     ) {
       return {
         success: false,
-        error: "Name, email, and message are required",
+        error: "Name, email, contact number, and message are required",
+      };
+    }
+
+    const nameValue = name.trim();
+    const emailValue = email.trim().toLowerCase();
+    const messageValue = message.trim();
+    const contactnoValue = contactno.trim();
+
+    if (!nameValue || !emailValue || !messageValue || !contactnoValue) {
+      return {
+        success: false,
+        error: "Name, email, contact number, and message are required",
       };
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(emailValue)) {
       return {
         success: false,
         error: "Please enter a valid email address",
@@ -61,10 +75,10 @@ export async function createMessage(formData: FormData) {
     }
 
     const newMessage = new Message({
-      name: name.trim(),
-      email: email.trim().toLowerCase(),
-      message: message.trim(),
-      contactno: typeof contactno === "string" ? contactno.trim() : "",
+      name: nameValue,
+      email: emailValue,
+      message: messageValue,
+      contactno: contactnoValue,
     });
 
     await newMessage.save();

@@ -51,7 +51,7 @@ const Hero = () => {
                           height={48}
                           priority={index === 0}
                           loading={index === 0 ? undefined : "lazy"}
-                          className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white-50"
+                          className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-surface border border-border"
                         />
                         <span>{word.text}</span>
                       </span>
@@ -67,7 +67,7 @@ const Hero = () => {
               </p>
             </div>
 
-            <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
+            <p className="text-foreground md:text-xl relative z-10 pointer-events-none">
               Hi, I&apos;m Sandeep Saini, a Full Stack Developer based in
               Tricity with a passion for code.
             </p>

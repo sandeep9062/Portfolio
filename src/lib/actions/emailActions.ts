@@ -30,19 +30,33 @@ export async function sendContactEmail(formData: FormData) {
       typeof name !== "string" ||
       typeof email !== "string" ||
       typeof message !== "string" ||
+      typeof contactno !== "string" ||
       !name ||
       !email ||
-      !message
+      !message ||
+      !contactno
     ) {
       return {
         success: false,
-        error: "Name, email, and message are required",
+        error: "Name, email, contact number, and message are required",
+      };
+    }
+
+    const nameValue = name.trim();
+    const emailValue = email.trim();
+    const messageValue = message.trim();
+    const contactnoValue = contactno.trim();
+
+    if (!nameValue || !emailValue || !messageValue || !contactnoValue) {
+      return {
+        success: false,
+        error: "Name, email, contact number, and message are required",
       };
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(emailValue)) {
       return {
         success: false,
         error: "Please enter a valid email address",
@@ -56,16 +70,14 @@ export async function sendContactEmail(formData: FormData) {
     const adminEmail = {
       from: process.env.SMTP_USER,
       to: process.env.ADMIN_EMAIL || process.env.SMTP_USER,
-      subject: `New Contact Form Submission from ${name}`,
+      subject: `New Contact Form Submission from ${nameValue}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Contact Number:</strong> ${
-          typeof contactno === "string" ? contactno : "Not provided"
-        }</p>
+        <p><strong>Name:</strong> ${nameValue}</p>
+        <p><strong>Email:</strong> ${emailValue}</p>
+        <p><strong>Contact Number:</strong> ${contactnoValue}</p>
         <p><strong>Message:</strong></p>
-        <p>${message}</p>
+        <p>${messageValue}</p>
         <hr>
         <p><small>Sent from portfolio contact form</small></p>
       `,
@@ -74,13 +86,13 @@ export async function sendContactEmail(formData: FormData) {
     // Auto-reply to user
     const userEmail = {
       from: process.env.SMTP_USER,
-      to: email,
+      to: emailValue,
       subject: "Thank you for contacting me!",
       html: `
-        <h2>Hi ${name},</h2>
+        <h2>Hi ${nameValue},</h2>
         <p>Thank you for reaching out! I've received your message and will get back to you as soon as possible.</p>
         <p><strong>Your message:</strong></p>
-        <p>${message}</p>
+        <p>${messageValue}</p>
         <hr>
         <p>Best regards,<br>Sandeep Saini</p>
       `,

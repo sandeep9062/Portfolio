@@ -21,8 +21,8 @@ function OgImage({ title, subtitle }: { title: string; subtitle: string }) {
         padding: "80px",
         backgroundColor: "#0e0e10",
         backgroundImage:
-          "radial-gradient(circle at 20% 20%, #1c2a4a 0%, transparent 50%), radial-gradient(circle at 80% 80%, #0e3a4a 0%, transparent 50%)",
-        color: "white",
+          "radial-gradient(circle at 20% 20%, #07241f 0%, transparent 50%), radial-gradient(circle at 80% 80%, #134e4a33 0%, transparent 50%)",
+        color: "#ededf0",
         fontFamily: "sans-serif",
       }}
     >
@@ -32,7 +32,7 @@ function OgImage({ title, subtitle }: { title: string; subtitle: string }) {
           alignItems: "center",
           fontSize: 28,
           letterSpacing: 4,
-          color: "#62e0ff",
+          color: "#5eead4",
           marginBottom: 24,
         }}
       >
@@ -53,7 +53,7 @@ function OgImage({ title, subtitle }: { title: string; subtitle: string }) {
           display: "flex",
           marginTop: 32,
           fontSize: 30,
-          color: "#d9ecff",
+          color: "#9a9aa6",
         }}
       >
         Sandeep Saini — Full Stack Developer · MERN · Next.js

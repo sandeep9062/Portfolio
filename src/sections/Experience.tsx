@@ -65,10 +65,10 @@ const Experience = () => {
       <div className="w-full h-full md:px-20 px-5">
         <TitleHeader
           title="Education & Professional Work Experience"
-          sub="💼 My Career Overview"
+          sub="01 / experience"
         />
         <div className="mt-32 relative">
-          <div className="absolute left-1/2 -translate-x-1/2 w-1 h-full bg-gradient-to-b from-transparent via-cyan-500 to-transparent top-0 hidden md:block" />
+          <div className="absolute left-1/2 -translate-x-1/2 w-1 h-full bg-gradient-to-b from-transparent via-accent to-transparent top-0 hidden md:block" />
 
           <div className="relative z-50 space-y-20 md:space-y-32">
             {expCards.map((card, index) => (
@@ -93,8 +93,8 @@ const Experience = () => {
                   </GlowCard>
                 </div>
 
-                <div aria-hidden="true" className="absolute hidden md:block w-4 h-4 rounded-full bg-blue-500 timeline-dot left-1/2 -translate-x-1/2">
-                  <div className="w-full h-full rounded-full bg-blue-500 blur-sm animate-pulse" />
+                <div aria-hidden="true" className="absolute hidden md:block w-4 h-4 rounded-full bg-accent timeline-dot left-1/2 -translate-x-1/2">
+                  <div className="w-full h-full rounded-full bg-accent blur-sm animate-pulse" />
                 </div>
 
                 <div
@@ -102,10 +102,10 @@ const Experience = () => {
                     index % 2 === 0 ? "md:pr-16 text-right" : "md:pl-16 text-left"
                   }`}
                 >
-                  <h3 className="font-semibold text-3xl mb-2">{card.title}</h3>
-                  <p className="my-5 text-white-50">🗓️&nbsp;{card.date}</p>
-                  <p className="text-[#839CB5] italic mb-3">Responsibilities</p>
-                  <ul className="list-disc ms-5 flex flex-col gap-3 text-white-50 text-left">
+                  <h3 className="font-display tracking-tight font-semibold text-3xl mb-2 text-foreground">{card.title}</h3>
+                  <p className="my-5 text-muted">🗓️&nbsp;{card.date}</p>
+                  <p className="text-muted italic mb-3">Responsibilities</p>
+                  <ul className="list-disc ms-5 flex flex-col gap-3 text-foreground text-left">
                     {card.responsibilities.map((responsibility, idx) => (
                       <li key={idx} className="text-lg">
                         {responsibility}
