@@ -20,6 +20,16 @@ function errorMessage(error: unknown, fallback: string): string {
 
 export async function sendContactEmail(formData: FormData) {
   try {
+    // Honeypot guard — never notify the owner for bot submissions, whether
+    // they come through the client handler or a direct (non-JS) POST.
+    const botfield = formData.get("botfield");
+    if (typeof botfield === "string" && botfield.trim() !== "") {
+      return {
+        success: true,
+        message: "Email sent successfully!",
+      };
+    }
+
     const name = formData.get("name");
     const email = formData.get("email");
     const message = formData.get("message");

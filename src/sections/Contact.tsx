@@ -51,7 +51,13 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Full number stored as "+91 9876543210"
+    // Honeypot field: bots auto-fill every input, real users never see it.
+    // Read it straight from the DOM so even non-React-filling bots are caught,
+    // then short-circuit here to avoid any server round-trip or email.
+    const botfield =
+      (e.currentTarget.elements.namedItem("botfield") as HTMLInputElement | null)
+        ?.value
+        ?.trim() ?? "";
     const fullContactNo = `${selectedCountry.dial} ${formState.contactno}`;
 
     const formData = new FormData();
@@ -59,26 +65,38 @@ const Contact = () => {
     formData.append("email", formState.email);
     formData.append("message", formState.message);
     formData.append("contactno", fullContactNo);
+    formData.append("botfield", botfield);
 
     try {
-      // Save message to database
-      const dbResult = await createMessage(formData);
-
-      // Send email notification
-      const emailResult = await sendContactEmail(formData);
-
-      if (dbResult.success) {
-        toast.success(dbResult.message ?? "Message sent successfully!");
+      if (botfield) {
+        // Honeypot triggered: pretend success so the bot moves on, but never
+        // persist the submission or notify the owner.
+        toast.success("Message sent successfully!");
         setFormState(initialState);
         setCountryIso(DEFAULT_COUNTRY_ISO);
-      } else {
-        toast.error(dbResult.error ?? "Failed to send message");
+        return;
       }
 
-      // Log email result (don't show to user to avoid confusion)
+      // Save message to database (Server Action also re-checks the honeypot
+      // and applies MongoDB rate limiting per client IP).
+      const dbResult = await createMessage(formData);
+
+      if (!dbResult.success) {
+        toast.error(dbResult.error ?? "Failed to send message");
+        return;
+      }
+
+      // Only notify the owner once the message was actually persisted, so
+      // rate-limited or rejected submissions don't trigger spam emails.
+      const emailResult = await sendContactEmail(formData);
       if (!emailResult.success) {
+        // Log email result (don't show to user to avoid confusion)
         console.warn("Email notification failed:", emailResult.error);
       }
+
+      toast.success(dbResult.message ?? "Message sent successfully!");
+      setFormState(initialState);
+      setCountryIso(DEFAULT_COUNTRY_ISO);
     } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
@@ -101,6 +119,33 @@ const Contact = () => {
                 onSubmit={handleSubmit}
                 className="w-full flex flex-col gap-7"
               >
+                {/*
+                  Honeypot field. Off-screen so humans never see/interact with
+                  it, but bots that auto-fill every input will populate it.
+                  The server (and client) reject submissions where this is set.
+                */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none"
+                  style={{
+                    position: "absolute",
+                    left: "-9999px",
+                    top: "auto",
+                    width: "1px",
+                    height: "1px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <label htmlFor="botfield">Leave this field empty</label>
+                  <input
+                    type="text"
+                    id="botfield"
+                    name="botfield"
+                    autoComplete="off"
+                    tabIndex={-1}
+                  />
+                </div>
+
                 <div>
                   <label htmlFor="name">Your name *</label>
                   <input

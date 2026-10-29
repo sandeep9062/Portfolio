@@ -5,6 +5,7 @@ import Message from "@/models/Message";
 import { requireEnv } from "@/lib/env";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import { getClientIP, checkRateLimit } from "@/lib/rateLimit";
 import jwt from "jsonwebtoken";
 
 // Helper function to verify admin authentication
@@ -29,7 +30,28 @@ async function verifyAdmin() {
 
 export async function createMessage(formData: FormData) {
   try {
+    // Honeypot: bots auto-fill every field, humans never see this one.
+    // Silently drop the submission without touching the database so spam
+    // never reaches Mongo or triggers the notification email.
+    const botfield = formData.get("botfield");
+    if (typeof botfield === "string" && botfield.trim() !== "") {
+      return {
+        success: true,
+        message: "Message sent successfully!",
+      };
+    }
+
     await connectDB();
+
+    // Rate limit submissions per client IP using a MongoDB sliding window.
+    const ip = await getClientIP();
+    const rate = await checkRateLimit(ip);
+    if (!rate.allowed) {
+      return {
+        success: false,
+        error: rate.error,
+      };
+    }
 
     const name = formData.get("name");
     const email = formData.get("email");
