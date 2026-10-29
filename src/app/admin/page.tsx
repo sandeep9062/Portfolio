@@ -40,7 +40,7 @@ export default async function MessagesPage() {
       "Authentication required to view messages.";
 
     return (
-      <main className="mx-auto max-w-6xl p-6">
+      <main className="mx-auto max-w-7xl p-6">
         <div className="mb-6">
           <h1 className="text-2xl font-semibold">Messages</h1>
           <p className="mt-1 text-sm text-gray-600">{errorMessage}</p>
@@ -53,7 +53,7 @@ export default async function MessagesPage() {
   const messages: MessageRow[] = result.data;
 
   return (
-    <main className="mx-auto max-w-6xl p-6">
+    <main className="mx-auto max-w-7xl p-6">
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Messages</h1>
         <div className="flex items-center gap-4">
@@ -79,10 +79,7 @@ export default async function MessagesPage() {
           <tbody className="divide-y divide-gray-100 bg-white">
             {messages.length === 0 ? (
               <tr>
-                <td
-                  colSpan={6}
-                  className="px-4 py-8 text-center text-gray-500"
-                >
+                <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
                   No messages found.
                 </td>
               </tr>
