@@ -53,7 +53,7 @@ export default async function MessagesPage() {
   const messages: MessageRow[] = result.data;
 
   return (
-    <main className="mx-auto max-w-7xl p-6">
+    <main className="mx-auto max-w-7xl max-h-full p-6">
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Messages</h1>
         <div className="flex items-center gap-4">
