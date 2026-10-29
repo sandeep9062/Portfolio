@@ -74,12 +74,13 @@ export async function createMessage(formData: FormData) {
       };
     }
 
-    // Contact number validation (basic check for digits and length)
-    const contactnoRegex = /^\d{10}$/; // Assuming a 10-digit number for simplicity
-    if (!contactnoRegex.test(contactnoValue)) {
+    // Contact number validation (basic check for digits and length) with country code support
+    const contactNoRegex = /^\+?\d{7,15}$/; // Allows optional '+' and 7 to 15 digits
+    if (!contactNoRegex.test(contactnoValue)) {
       return {
         success: false,
-        error: "Please enter a valid 10-digit contact number",
+        error:
+          "Please enter a valid contact number (7 to 15 digits, optional '+' for country code)",
       };
     }
 
