@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { createMessage } from "@/lib/actions/messageActions";
 import { sendContactEmail } from "@/lib/actions/emailActions";
 import { COUNTRIES, DEFAULT_COUNTRY_ISO } from "@/lib/Countrycodes";
+import CountryCodeSelect from "@/components/CountryCodeSelect";
 
 import TitleHeader from "@/components/TitleHeader";
 import ContactExperience from "@/components/models/contact/ContactExperience";
@@ -129,20 +130,11 @@ const Contact = () => {
                 <div>
                   <label htmlFor="contactno">Your Contact Number *</label>
                   <div className="flex gap-2">
-                    <select
-                      id="countrycode"
-                      name="countrycode"
-                      aria-label="Country code"
+                    <CountryCodeSelect
                       value={countryIso}
-                      onChange={(e) => setCountryIso(e.target.value)}
-                      className="w-28 shrink-0 cursor-pointer rounded-md px-2 py-3 text-sm"
-                    >
-                      {COUNTRIES.map((c) => (
-                        <option key={c.iso} value={c.iso}>
-                          {c.iso} ({c.dial}) – {c.name}
-                        </option>
-                      ))}
-                    </select>
+                      onChange={setCountryIso}
+                      disabled={loading}
+                    />
 
                     <input
                       type="tel"
