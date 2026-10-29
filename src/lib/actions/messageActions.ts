@@ -74,16 +74,18 @@ export async function createMessage(formData: FormData) {
       };
     }
 
-    // Contact number validation (basic check for digits and length) with country code support
-    const contactNoRegex = /^\+?\d{7,15}$/; // Allows optional '+' and 7 to 15 digits
-    if (!contactNoRegex.test(contactnoValue)) {
+    // Contact number validation with country code support.
+    // Accepts "+91 9876543210", "+919876543210", "+91-98765-43210", etc.
+    const cleanedContactNo = contactnoValue.replace(/[\s\-().]/g, ""); // strip spaces, hyphens, brackets
+    const contactNoRegex = /^\+[1-9]\d{6,14}$/; // '+' then 7-15 digits total (E.164)
+
+    if (!contactNoRegex.test(cleanedContactNo)) {
       return {
         success: false,
         error:
-          "Please enter a valid contact number (7 to 15 digits, optional '+' for country code)",
+          "Please enter a valid contact number with country code (e.g. +91 9876543210)",
       };
     }
-
     const newMessage = new Message({
       name: nameValue,
       email: emailValue,
