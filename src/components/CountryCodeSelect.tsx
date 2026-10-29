@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { COUNTRIES } from "@/lib/countryCodes";
+import { COUNTRIES } from "@/lib/Countrycodes";
 
 interface CountryCodeSelectProps {
   value: string; // ISO code, e.g. "IN"
