@@ -1,6 +1,7 @@
 import { getMessages } from "@/lib/actions/messageActions";
 import LoginForm from "./LoginForm";
 import LogoutButton from "./LogoutButton";
+import DeleteButton from "./DeleteButton";
 
 // Always fetch fresh data on each request so newly received messages and the
 // current authentication state are reflected immediately.
@@ -53,7 +54,7 @@ export default async function MessagesPage() {
   const messages: MessageRow[] = result.data;
 
   return (
-    <main className="mx-auto max-w-7xl max-h-full p-6">
+    <main className="mx-auto max-w-7xl p-6">
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Messages</h1>
         <div className="flex items-center gap-4">
@@ -74,12 +75,13 @@ export default async function MessagesPage() {
               <th className="px-4 py-3">Email</th>
               <th className="px-4 py-3">Message</th>
               <th className="px-4 py-3">Received</th>
+              <th className="px-4 py-3 text-center">Action</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100 bg-white">
             {messages.length === 0 ? (
               <tr>
-                <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
+                <td colSpan={7} className="px-4 py-8 text-center text-gray-500">
                   No messages found.
                 </td>
               </tr>
@@ -115,6 +117,9 @@ export default async function MessagesPage() {
                   </td>
                   <td className="whitespace-nowrap px-4 py-3 text-gray-500">
                     {formatDate(m.createdAt)}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-3 text-center">
+                    <DeleteButton id={m.id} />
                   </td>
                 </tr>
               ))

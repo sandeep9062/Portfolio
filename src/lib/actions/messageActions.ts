@@ -74,6 +74,15 @@ export async function createMessage(formData: FormData) {
       };
     }
 
+    // Contact number validation (basic check for digits and length)
+    const contactnoRegex = /^\d{10}$/; // Assuming a 10-digit number for simplicity
+    if (!contactnoRegex.test(contactnoValue)) {
+      return {
+        success: false,
+        error: "Please enter a valid 10-digit contact number",
+      };
+    }
+
     const newMessage = new Message({
       name: nameValue,
       email: emailValue,
@@ -142,6 +151,51 @@ export async function getMessages() {
         error instanceof Error && error.message
           ? error.message
           : "Failed to fetch messages",
+    };
+  }
+}
+
+export async function deleteMessage(id: string) {
+  try {
+    // Verify admin authentication
+    const auth = await verifyAdmin();
+    if (!auth.success) {
+      return auth;
+    }
+
+    await connectDB();
+
+    if (!id) {
+      return {
+        success: false,
+        error: "Message ID is required",
+      };
+    }
+
+    const deleted = await Message.findByIdAndDelete(id);
+
+    if (!deleted) {
+      return {
+        success: false,
+        error: "Message not found",
+      };
+    }
+
+    // Revalidate the admin messages page so the updated list is shown
+    revalidatePath("/admin");
+
+    return {
+      success: true,
+      message: "Message deleted successfully",
+    };
+  } catch (error) {
+    console.error("Error deleting message:", error);
+    return {
+      success: false,
+      error:
+        error instanceof Error && error.message
+          ? error.message
+          : "Failed to delete message",
     };
   }
 }
