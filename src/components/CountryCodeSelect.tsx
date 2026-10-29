@@ -117,7 +117,14 @@ export default function CountryCodeSelect({
           <ul
             role="listbox"
             aria-label="Select country code"
-            className="max-h-64 overflow-y-auto py-1"
+            // Stop smooth-scroll libraries (Lenis, locomotive, etc.) from hijacking the wheel/touch
+            data-lenis-prevent
+            data-lenis-prevent-wheel
+            data-lenis-prevent-touch
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+            style={{ WebkitOverflowScrolling: "touch" }}
+            className="max-h-64 touch-pan-y overflow-y-auto overscroll-contain py-1 [scrollbar-width:thin]"
           >
             {filtered.length === 0 ? (
               <li className="px-3 py-3 text-center text-sm opacity-60">
